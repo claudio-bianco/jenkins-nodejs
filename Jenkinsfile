@@ -85,7 +85,7 @@ pipeline {
             '''
             // rm -rf node_modules
             sh '''
-            CACHE_FOLDER=${HOME}/.cache/md5
+            CACHE_FOLDER=${WORKSPACE}/.cache/md5
             echo "EXECUTOR_NUMBER: ${EXECUTOR_NUMBER}"
             MD5_FILE_NAME=package-json_${EXECUTOR_NUMBER}.md5sum
 
