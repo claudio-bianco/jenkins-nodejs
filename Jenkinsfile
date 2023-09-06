@@ -22,8 +22,15 @@ def cacheOrRestoreNodeModules() {
 }
 
 pipeline {
+    // agent {
+    //     docker { image 'node:18.17.1-alpine3.18' }
+    // }
+
     agent {
-        docker { image 'node:18.17.1-alpine3.18' }
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        }
     }
 
     parameters {
