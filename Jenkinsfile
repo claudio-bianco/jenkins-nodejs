@@ -56,7 +56,7 @@ pipeline {
 
 	stage('Git') {
         steps {        
-		    git 'https://github.com/claudio-bianco/jenkins-nodejs.git'
+		    git 'https://github.com/claudio-bianco/jenkins-nodejs'
         }
 	}
 
