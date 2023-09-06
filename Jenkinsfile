@@ -55,9 +55,14 @@ pipeline {
         // }
 
 	stage('Git') {
-		git 'https://github.com/claudio-bianco/jenkins-nodejs.git'
+        steps {        
+		    git 'https://github.com/claudio-bianco/jenkins-nodejs.git'
+        }
 	}
+
 	stage('Build') {
-		sh 'npm install'	        
+        steps {           
+		    sh 'npm install'	
+        }        
     }
 }
