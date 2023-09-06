@@ -42,7 +42,7 @@ pipeline {
     environment {
         // NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
         // NPM_CONFIG_CACHE = "${WORKSPACE}/src/node_modules"
-        NPM_CONFIG_CACHE = 'npm-cache'
+        npm_config_cache = 'npm-cache'
         HOME = '.'
         // // Override HOME to WORKSPACE value
         // HOME = "${WORKSPACE}"
