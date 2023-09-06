@@ -42,8 +42,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                cacheOrRestoreNodeModules()
-                sh 'npm install'
+                // cacheOrRestoreNodeModules()
+                // sh 'npm install'
+
+                sh 'ls /var/lib/jenkins/caches/'
+
+                sh 'ls /var/lib/jenkins'
+
+                sh 'zip -r jenkins-home-backup /var/lib/jenkins -x /var/lib/jenkins/caches/\*'
 
             }
         }
