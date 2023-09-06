@@ -89,7 +89,7 @@ pipeline {
             
             # check if folder exists and copy node_modules to current directory
             if [ -d ${CACHE_FOLDER} ]; then
-                cp -r ${CACHE_FOLDER}/node_modules ./src
+                cp -r ${CACHE_FOLDER}/node_modules .
             fi
             
             cd src && npm install --no-audit
@@ -97,7 +97,7 @@ pipeline {
             # if folder does not exists, create it and cache node_modules folder
             if ! [ -d ${CACHE_FOLDER} ]; then
                 mkdir -p ${CACHE_FOLDER}
-                cp -r ./src/node_modules ${CACHE_FOLDER}/node_modules
+                cp -r node_modules ${CACHE_FOLDER}/node_modules
             fi
             '''
         }
