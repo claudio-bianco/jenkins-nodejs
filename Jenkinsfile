@@ -1,7 +1,6 @@
 def cacheOrRestoreNodeModules() {
     if (params.CACHED_NODE_MODULES) {
-        sh '''
-        #!/bin/bash
+        sh '''        
         MD5_SUM_PACKAGE_JSON=($(md5sum package.json))
         # CACHE_FOLDER=/home/jenkins/.cache/npm/${MD5_SUM_PACKAGE_JSON}
         CACHE_FOLDER=/var/lib/jenkins/workspace/.cache/npm/${MD5_SUM_PACKAGE_JSON}
@@ -44,7 +43,6 @@ pipeline {
         stage('Build') {
             steps {
                 cacheOrRestoreNodeModules()
-                echo "Performing npm build..."
                 sh 'npm install'
 
             }
