@@ -85,14 +85,15 @@ pipeline {
         steps {
             sh '''
             MD5_SUM_PACKAGE_JSON=$(set -- $(md5sum src/package.json); echo $1)
-            CACHE_FOLDER=${WORKSPACE}/.cache2/npm/${MD5_SUM_PACKAGE_JSON}
+            CACHE_FOLDER=${WORKSPACE}/.cache3/npm/${MD5_SUM_PACKAGE_JSON}
             
             # check if folder exists and copy node_modules to current directory
             if [ -d ${CACHE_FOLDER} ]; then
                 cp -r ${CACHE_FOLDER}/node_modules .
             fi
             
-            cd src && npm install --no-audit
+            # cd src && npm install --no-audit
+            npm install --no-audit
             
             # if folder does not exists, create it and cache node_modules folder
             if ! [ -d ${CACHE_FOLDER} ]; then
