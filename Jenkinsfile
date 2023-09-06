@@ -40,18 +40,24 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                // cacheOrRestoreNodeModules()
-                // sh 'npm install'
+        // stage('Build') {
+        //     steps {
+        //         // cacheOrRestoreNodeModules()
+        //         // sh 'npm install'
 
-                sh 'npm i'
+        //         sh 'npm i'
 
-                sh 'tar cvfz ${HOME}/jenkins-nodejs.tar.gz node_modules'
+        //         sh 'tar cvfz ${HOME}/jenkins-nodejs.tar.gz node_modules'
 
-                // sh 'zip -r jenkins-home-backup /var/lib/jenkins -x /var/lib/jenkins/caches/\*'
+        //         // sh 'zip -r jenkins-home-backup /var/lib/jenkins -x /var/lib/jenkins/caches/\*'
 
-            }
-        }
+        //     }
+        // }
+
+	stage('Git') {
+		git 'https://github.com/claudio-bianco/jenkins-nodejs.git'
+	}
+	stage('Build') {
+		sh 'npm install'	        
     }
 }
