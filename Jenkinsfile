@@ -41,7 +41,7 @@ pipeline {
 
     environment {
         // NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
-        NPM_CONFIG_CACHE = "${WORKSPACE}/src"
+        NPM_CONFIG_CACHE = "${WORKSPACE}/src/node_modules"
     }
 
     stages {
