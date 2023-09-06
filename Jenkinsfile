@@ -72,7 +72,8 @@ pipeline {
 	// }
 
 	stage('Build') {
-        steps {           
+        steps {         
+            cacheOrRestoreNodeModules()  
 		    sh 'npm install'	
         }        
     }
