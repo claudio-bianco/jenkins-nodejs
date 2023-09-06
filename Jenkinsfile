@@ -1,7 +1,7 @@
 def cacheOrRestoreNodeModules() {
     if (params.CACHED_NODE_MODULES) {
         sh '''
-        MD5_SUM_PACKAGE_JSON=($(md5sum package.json))
+        MD5_SUM_PACKAGE_JSON=(${md5sum package.json})
         # CACHE_FOLDER=/home/jenkins/.cache/npm/${MD5_SUM_PACKAGE_JSON}
         CACHE_FOLDER=/var/lib/jenkins/workspace/.cache/npm/${MD5_SUM_PACKAGE_JSON}
         
