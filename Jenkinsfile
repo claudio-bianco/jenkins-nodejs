@@ -88,7 +88,7 @@ pipeline {
     stage('Clone') {
         steps {
             git branch: 'main',
-                // credentialsId: '121231k3jkj2kjkjk',
+                // credentialsId: '1234',
                 url: 'https://github.com/claudio-bianco/jenkins-nodejs'
         }
     }    
