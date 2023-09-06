@@ -39,9 +39,9 @@ pipeline {
                 defaultValue: !'master'.equals(env.BRANCH_NAME) && !'develop'.equals(env.BRANCH_NAME))
     }
 
-    environment {
-        NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
-    }
+    // environment {
+    //     NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
+    // }
 
     stages {
 
