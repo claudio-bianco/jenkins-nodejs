@@ -75,8 +75,8 @@ pipeline {
 	stage('Build') {
         steps {         
             // cacheOrRestoreNodeModules()
-            sh 'cd src && ls -la'
-		    sh 'npm install'	
+            // sh 'cd src && ls -la'
+		    sh 'cd src && npm install'	
         }        
     }
 
