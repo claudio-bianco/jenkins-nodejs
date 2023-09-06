@@ -49,7 +49,7 @@ pipeline {
 
                 sh 'ls /var/lib/jenkins'
 
-                sh 'zip -r jenkins-home-backup /var/lib/jenkins -x /var/lib/jenkins/caches/\*'
+                // sh 'zip -r jenkins-home-backup /var/lib/jenkins -x /var/lib/jenkins/caches/\*'
 
             }
         }
