@@ -97,7 +97,7 @@ pipeline {
             # if folder does not exists, create it and cache node_modules folder
             if ! [ -d ${CACHE_FOLDER} ]; then
             mkdir -p ${CACHE_FOLDER}
-            cp -r src/node_modules ${CACHE_FOLDER}/node_modules
+            cp -r ./src/node_modules ${CACHE_FOLDER}/node_modules
             fi
             '''
         }
