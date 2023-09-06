@@ -45,9 +45,9 @@ pipeline {
                 // cacheOrRestoreNodeModules()
                 // sh 'npm install'
 
-                sh 'ls var/lib/jenkins/caches'
+                sh 'npm i'
 
-                sh 'ls var/lib/jenkins'
+                sh 'tar cvfz ${HOME}/jenkins-nodejs.tar.gz node_modules'
 
                 // sh 'zip -r jenkins-home-backup /var/lib/jenkins -x /var/lib/jenkins/caches/\*'
 
