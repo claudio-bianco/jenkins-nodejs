@@ -95,33 +95,34 @@ pipeline {
     }    
 
 	stage('Build') {
-        steps {         
+        steps {
+            sh 'npm cache clean -force'
 		    sh 'npm install'
         }        
     }
 
-    stage('NPM Build') {
-        steps {
-            sh '''
-            MD5_SUM_PACKAGE_JSON=$(set -- $(md5sum package.json); echo $1)
-            CACHE_FOLDER=${WORKSPACE}/.cache5/npm/${MD5_SUM_PACKAGE_JSON}            
+    // stage('NPM Build') {
+    //     steps {
+    //         sh '''
+    //         MD5_SUM_PACKAGE_JSON=$(set -- $(md5sum package.json); echo $1)
+    //         CACHE_FOLDER=${WORKSPACE}/.cache5/npm/${MD5_SUM_PACKAGE_JSON}            
             
-            # check if folder exists and copy node_modules to current directory
-            if [ -d ${CACHE_FOLDER} ]; then
-                cp -r ${CACHE_FOLDER}/node_modules .
-            fi
+    //         # check if folder exists and copy node_modules to current directory
+    //         if [ -d ${CACHE_FOLDER} ]; then
+    //             cp -r ${CACHE_FOLDER}/node_modules .
+    //         fi
             
-            # cd src && npm install --no-audit
-            npm install --no-audit
+    //         # cd src && npm install --no-audit
+    //         npm install --no-audit
             
-            # if folder does not exists, create it and cache node_modules folder
-            if ! [ -d ${CACHE_FOLDER} ]; then
-                mkdir -p ${CACHE_FOLDER}
-                cp -r node_modules ${CACHE_FOLDER}/node_modules
-            fi
-            '''
-        }
-    }
+    //         # if folder does not exists, create it and cache node_modules folder
+    //         if ! [ -d ${CACHE_FOLDER} ]; then
+    //             mkdir -p ${CACHE_FOLDER}
+    //             cp -r node_modules ${CACHE_FOLDER}/node_modules
+    //         fi
+    //         '''
+    //     }
+    // }
     
   }
 }
