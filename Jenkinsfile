@@ -42,12 +42,12 @@ pipeline {
     environment {
         // NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
         // NPM_CONFIG_CACHE = "${WORKSPACE}/src/node_modules"
-        // npm_config_cache = 'npm-cache'
-        // HOME = '.'
-        // Override HOME to WORKSPACE value
-        HOME = "${WORKSPACE}"
-        // or override npm's cache directory (~/.npm)
-        NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
+        NPM_CONFIG_CACHE = 'npm-cache'
+        HOME = '.'
+        // // Override HOME to WORKSPACE value
+        // HOME = "${WORKSPACE}"
+        // // or override npm's cache directory (~/.npm)
+        // NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
     }
 
     stages {
@@ -86,11 +86,19 @@ pipeline {
     //     }        
     // }
 
+    stage('Clone') {
+        steps {
+            git branch: 'main',
+                // credentialsId: '121231k3jkj2kjkjk',
+                url: 'https://github.com/claudio-bianco/jenkins-nodejs'
+        }
+    }    
+
     stage('NPM Build') {
         steps {
             sh '''
             MD5_SUM_PACKAGE_JSON=$(set -- $(md5sum src/package.json); echo $1)
-            CACHE_FOLDER=${WORKSPACE}/.cache4/npm/${MD5_SUM_PACKAGE_JSON}            
+            CACHE_FOLDER=${WORKSPACE}/.cache5/npm/${MD5_SUM_PACKAGE_JSON}            
             
             # check if folder exists and copy node_modules to current directory
             if [ -d ${CACHE_FOLDER} ]; then
