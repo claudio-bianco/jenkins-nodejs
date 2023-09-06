@@ -82,7 +82,7 @@ pipeline {
         steps {
             sh '''
             MD5_SUM_PACKAGE_JSON=$(set -- $(md5sum package.json); echo $1)
-            CACHE_FOLDER=${WORKSPACE}/.cache/npm/${MD5_SUM_PACKAGE_JSON}
+            CACHE_FOLDER=${WORKSPACE}/.cachenew/npm/${MD5_SUM_PACKAGE_JSON}
             
             # check if folder exists and copy node_modules to current directory
             if [ -d ${CACHE_FOLDER} ]; then
