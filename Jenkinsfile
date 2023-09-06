@@ -33,10 +33,14 @@ pipeline {
         }
     }
 
-    parameters {
-        booleanParam(name: "CACHED_NODE_MODULES",
-                description: "Should node_modules be taken from cache?",
-                defaultValue: !'master'.equals(env.BRANCH_NAME) && !'develop'.equals(env.BRANCH_NAME))
+    // parameters {
+    //     booleanParam(name: "CACHED_NODE_MODULES",
+    //             description: "Should node_modules be taken from cache?",
+    //             defaultValue: !'master'.equals(env.BRANCH_NAME) && !'develop'.equals(env.BRANCH_NAME))
+    // }
+
+    environment {
+        NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
     }
 
     stages {
