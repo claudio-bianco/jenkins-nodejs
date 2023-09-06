@@ -42,8 +42,12 @@ pipeline {
     environment {
         // NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
         // NPM_CONFIG_CACHE = "${WORKSPACE}/src/node_modules"
-        npm_config_cache = 'npm-cache'
-        HOME = '.'
+        // npm_config_cache = 'npm-cache'
+        // HOME = '.'
+        // Override HOME to WORKSPACE value
+        HOME = "${WORKSPACE}"
+        // or override npm's cache directory (~/.npm)
+        NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
     }
 
     stages {
