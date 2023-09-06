@@ -22,10 +22,6 @@ def cacheOrRestoreNodeModules() {
 }
 
 pipeline {
-    // agent {
-    //     docker { image 'node:18.17.1-alpine3.18' }
-    // }
-
     agent {
         docker {
             image 'node:8.12.0'
@@ -51,26 +47,6 @@ pipeline {
 
     stages {
 
-        // stage('Test') {
-        //     steps {
-        //         sh 'node --version'
-        //     }
-        // }
-
-        // stage('Build') {
-        //     steps {
-        //         // cacheOrRestoreNodeModules()
-        //         // sh 'npm install'
-
-        //         sh 'npm i'
-
-        //         sh 'tar cvfz ${HOME}/jenkins-nodejs.tar.gz node_modules'
-
-        //         // sh 'zip -r jenkins-home-backup /var/lib/jenkins -x /var/lib/jenkins/caches/\*'
-
-        //     }
-        // }
-
     stage('Clone') {
         steps {
             git branch: 'main',
@@ -86,15 +62,6 @@ pipeline {
 		    // sh 'npm install'
         }        
     }
-
-
-
-	// stage('Build') {
-    //     steps {
-    //         // sh 'npm cache clean -force'
-	// 	    sh 'npm install'
-    //     }        
-    // }
 
     // stage('NPM Build') {
     //     steps {
