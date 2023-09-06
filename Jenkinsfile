@@ -61,11 +61,11 @@ pipeline {
         //     }
         // }
 
-	stage('Git') {
-        steps {        
-		    git 'https://github.com/claudio-bianco/jenkins-nodejs'
-        }
-	}
+	// stage('Git') {
+    //     steps {        
+	// 	    git 'https://github.com/claudio-bianco/jenkins-nodejs'
+    //     }
+	// }
 
 	stage('Build') {
         steps {           
