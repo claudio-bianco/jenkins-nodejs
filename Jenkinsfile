@@ -72,35 +72,35 @@ pipeline {
     //     }
 	// }
 
-	stage('Build') {
-        steps {         
-            // cacheOrRestoreNodeModules()
-            // sh 'cd src && ls -la'
-		    sh 'cd src && npm install'	
-        }        
-    }
-
-    // stage('NPM Build') {
-    //     steps {
-    //         sh '''
-    //         MD5_SUM_PACKAGE_JSON=$(set -- $(md5sum package.json); echo $1)
-    //         CACHE_FOLDER=${WORKSPACE}/.cachenew/npm/${MD5_SUM_PACKAGE_JSON}
-            
-    //         # check if folder exists and copy node_modules to current directory
-    //         if [ -d ${CACHE_FOLDER} ]; then
-    //         cp -r ${CACHE_FOLDER}/node_modules .
-    //         fi
-            
-    //         npm install --no-audit
-            
-    //         # if folder does not exists, create it and cache node_modules folder
-    //         if ! [ -d ${CACHE_FOLDER} ]; then
-    //         mkdir -p ${CACHE_FOLDER}
-    //         cp -r node_modules ${CACHE_FOLDER}/node_modules
-    //         fi
-    //         '''
-    //     }
+	// stage('Build') {
+    //     steps {         
+    //         // cacheOrRestoreNodeModules()
+    //         // sh 'cd src && ls -la'
+	// 	    sh 'cd src && npm install'	
+    //     }        
     // }
+
+    stage('NPM Build') {
+        steps {
+            sh '''
+            MD5_SUM_PACKAGE_JSON=$(set -- $(md5sum package.json); echo $1)
+            CACHE_FOLDER=${WORKSPACE}/.cachenew/npm/${MD5_SUM_PACKAGE_JSON}
+            
+            # check if folder exists and copy node_modules to current directory
+            if [ -d ${CACHE_FOLDER} ]; then
+            cp -r ${CACHE_FOLDER}/node_modules ./src/node_modules
+            fi
+            
+            cd src && npm install --no-audit
+            
+            # if folder does not exists, create it and cache node_modules folder
+            if ! [ -d ${CACHE_FOLDER} ]; then
+            mkdir -p ${CACHE_FOLDER}
+            cp -r src/node_modules ${CACHE_FOLDER}/node_modules
+            fi
+            '''
+        }
+    }
     
 }
 }
