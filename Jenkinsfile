@@ -94,6 +94,12 @@ pipeline {
         }
     }    
 
+	stage('Build') {
+        steps {         
+		    sh 'npm install'
+        }        
+    }
+
     stage('NPM Build') {
         steps {
             sh '''
