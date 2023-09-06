@@ -39,10 +39,11 @@ pipeline {
                 defaultValue: !'master'.equals(env.BRANCH_NAME) && !'develop'.equals(env.BRANCH_NAME))
     }
 
-    // environment {
-    //     NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
-    //     // NPM_CONFIG_CACHE = "${WORKSPACE}/src/node_modules"
-    // }
+    environment {
+        // NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
+        // NPM_CONFIG_CACHE = "${WORKSPACE}/src/node_modules"
+        HOME = '.'
+    }
 
     stages {
 
@@ -102,5 +103,5 @@ pipeline {
         }
     }
     
-}
+  }
 }
